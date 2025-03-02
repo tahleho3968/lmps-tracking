@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMPS Tracking Dashboard</title>
+</head>
+<body>
+    <h1>Stolen Devices</h1>
+    <table border="1">
+        <tr>
+            <th>Phone Number</th>
+            <th>Device Name</th>
+            <th>Last Known Location</th>
+            <th>Last Active Time</th>
+            <th>Image</th>
+        </tr>
+        {% for device in devices %}
+        <tr>
+            <td>{{ device.phone_number }}</td>
+            <td>{{ device.device_name }}</td>
+            <td>{{ device.last_known_location }}</td>
+            <td>{{ device.last_active_time }}</td>
+            <td>
+                {% if device.image_path and device.image_path != "None" %}
+                    <img src="{{ device.image_path }}" width="100">
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
